@@ -15,4 +15,4 @@ variables:
     ADDON_I386_BASE: "hassioaddons/base-i386:7.1.0"
 
     # skip shellcheck until api scapegoat is in it's own git repository
-    PREFLIGHT_SHELLCHECK: false
+    PREFLIGHT_SHELLCHECK: "false"
