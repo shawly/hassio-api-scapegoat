@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:7.0.5
+ARG BUILD_FROM=hassioaddons/base:7.1.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -22,7 +22,6 @@ RUN \
     \
     && apk del --purge .build-dependencies \
     && rm -fr /tmp/*
-
 
 # Build arguments
 ARG BUILD_ARCH
