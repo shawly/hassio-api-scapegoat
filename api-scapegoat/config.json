@@ -26,21 +26,16 @@
   },
   "schema": {
     "log_level": "list(trace|debug|info|notice|warning|error|fatal)",
-    "ssl": "bool",
     "certfile": "str",
     "keyfile": "str",
-    "leave_front_door_open": "bool?",
+    "ssl": "bool",
     "apis": [
       {
         "host": "str",
         "port": "int(1,65535)",
-        "failover": {
-          "response": {
-            "content-type": "str",
-            "body": "str",
-            "status-code": "int(100,599)"
-          }
-        }
+        "failover_response_content_type": "str",
+        "failover_response_body": "str",
+        "failover_response_status_code": "int(100,599)"
       }
     ]
   }
