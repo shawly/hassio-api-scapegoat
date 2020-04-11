@@ -7,6 +7,7 @@ variables:
   ADDON_TARGET: "api-scapegoat"
 
   ADDON_LEGACY_TAGS: "true"
+  ADDON_QEMU: "true"
 
   ADDON_AARCH64_BASE: "hassioaddons/base-aarch64:7.1.0"
   ADDON_AMD64_BASE: "hassioaddons/base-amd64:7.1.0"
