@@ -15,6 +15,10 @@ variables:
   ADDON_ARMV7_BASE: "hassioaddons/base-armv7:7.1.0"
   ADDON_I386_BASE: "hassioaddons/base-i386:7.1.0"
 
+  ADDONS_REPO_STABLE: "shawly/hassio-addons"
+  ADDONS_REPO_BETA: "shawly/hassio-addons-beta"
+  ADDONS_REPO_EDGE: "shawly/hassio-addons-edge"
+
   DOCKER_HUB_ORG: shawly
   # skip shellcheck until api scapegoat is in it's own git repository
   PREFLIGHT_SHELLCHECK: "false"
