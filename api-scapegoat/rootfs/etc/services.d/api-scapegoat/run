@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: API Scapegoat
+# Starts server to serve the app
+# ==============================================================================
+bashio::log.info "Run API Scapegoat.."
+
+cd /opt/api-scapegoat \
+    || bashio::exit.nok "Could not change into app directory"
+
+exec node ./bin/www
