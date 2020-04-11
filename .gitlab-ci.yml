@@ -16,8 +16,8 @@ variables:
 
   ADDONS_REPO_STABLE: "shawly/hassio-addons"
   ADDONS_REPO_BETA: "shawly/hassio-addons-beta"
-  ADDONS_REPO_EDGE: "shawly/hassio-addons-edge"
+  ADDONS_REPO_EDGE: "shawly/hassio-addons-dev"
 
-  DOCKER_HUB_ORG: shawly
+  DOCKER_HUB_ORG: hassiofun
   # skip shellcheck until api scapegoat is in it's own git repository
   PREFLIGHT_SHELLCHECK: "false"
