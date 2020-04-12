@@ -32,9 +32,12 @@ To install this add-on you need to do the following
 1. Configure the "API Scapegoat" add-on. (See below)
 1. Start the "API Scapegoat" add-on.
 1. Check the logs of the "API Scapegoat" add-on to make sure it starts.
-1. Click "Open Web UI" to get the **hostname** or **ip** for the instance, you need it for your rest sensors.
-1. Now you can edit the configurations within your "config/api-scapegoat" folder.
-1. Please look at the [setup](#setup-api-scapegoat) section to configure API Scapegoat itself
+1. Click "Open Web UI" to get the **hostname** or **ip** for the instance, you
+need it for your rest sensors.
+1. Now you can edit the configurations within your "config/api-scapegoat"
+folder.
+1. Please look at the [setup](#setup-api-scapegoat) section to configure API
+Scapegoat itself
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/shawly/hassio-addons`.
@@ -169,7 +172,7 @@ Here you can define multiple multiple paths that should be rewritten, this is
 useful for when you defined a `route` which is different from the base path of
 your target.
 
-#### Example:
+#### Example
 
 ```yml
 route: /mytvapi
@@ -194,7 +197,7 @@ router:
 
 If your client, lets say your REST sensor, provides the `Host` header with the
 value `myclient`, all requests to your `route` will go to
-"https://jsonplaceholder.typicode.com" instead. This might be useful for cases
+`https://jsonplaceholder.typicode.com` instead. This might be useful for cases
 where you want multiple targets for the same API.
 
 ## Changelog & Releases
