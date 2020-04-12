@@ -1,14 +1,23 @@
 {
     "route": "/rest/api",
     "target": "http://192.168.100.233:8080",
+    "pathRewrite": {
+        "^/rest/api/old-path": "/api/new-path",
+        "^/rest/api": "/path"
+    },
+    "changeOrigin": true,
+    "router": {
+        "dev.localhost:3000": "http://localhost:8000",
+        "homeassistant:8123": "http://some.other.host"
+    },
     "failover": {
-      "response": {
-        "status_code": 404,
-        "headers": {
-          "content-type": "application/json",
-          "server": "API Scapegoat"
-        },
-        "body": "{ \"status\": \"api not found\" }"
-      }
+        "response": {
+            "status_code": 404,
+            "headers": {
+                "content-type": "application/json",
+                "server": "API Scapegoat"
+            },
+            "body": "{ \"status\": \"api not found\" }"
+        }
     }
-  }
+}

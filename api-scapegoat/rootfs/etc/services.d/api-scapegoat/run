@@ -8,4 +8,4 @@ bashio::log.info "Run API Scapegoat.."
 cd /opt/api-scapegoat \
     || bashio::exit.nok "Could not change into app directory"
 
-NODE_ENV=production exec node ./bin/www
+NODE_ENV=production LOG_LEVEL=$(bashio::config 'log_level') exec node ./bin/www

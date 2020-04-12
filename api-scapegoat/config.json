@@ -28,7 +28,7 @@
     "keyfile": "privkey.pem"
   },
   "schema": {
-    "log_level": "list(trace|debug|info|notice|warning|error|fatal)",
+    "log_level": "list(off|debug|info|warning|error)",
     "certfile": "str",
     "keyfile": "str",
     "ssl": "bool"

@@ -4,15 +4,19 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const winston = require('winston')
-const consoleTransport = new winston.transports.Console()
+
+// setup logging
+const log_level = (process.env.LOG_LEVEL === 'off' ? 'silent' : process.env.LOG_LEVEL) || 'debug';
+const consoleTransport = new winston.transports.Console();
 const logger = new winston.createLogger({
-  level: 'info',
+  level: log_level,
+  silent: log_level === 'silent',
   format: winston.format.simple(),
   transports: [consoleTransport]
-})
+});
+logger.debug('[API Scapegoat] Log level has ben set to "' + log_level + '"')
 
 // required to read yaml files
-const env = process.env.NODE_ENV || 'dev';
 const fs = require('fs');
 const yaml = require('js-yaml');
 
@@ -27,7 +31,11 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(morgan('dev'));
+// turn on morgan logger if log_level > info
+logger.debug('logger level is '+logger.level);
+if (logger.level === 'debug' || logger.level === 'info') {
+  app.use(morgan('[API Scapegoat] :method :url :status :res[content-length] - :response-time ms'));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -41,13 +49,23 @@ const createScapegoat = function (config) {
 
   app.use(config.route, createProxyMiddleware({
     target: config.target,
-    changeOrigin: true,
+    changeOrigin: config.changeOrigin,
+    ws: config.isWebsocket,
+    router: config.router,
+    pathRewrite: config.pathRewrite,
+    proxyTimeout: config.proxyTimeout,
+    timeout: config.timeout,
+    secure: true,
     onError(err, req, res) {
       const failoverResponse = config.failover.response;
-      res.writeHead(failoverResponse.status_code, failoverResponse.headers);
-      logger.error(err);
-      res.end(failoverResponse.body);
+      const headers = failoverResponse.headers;
+      const body = failoverResponse.body;
+      // content length will always be overridden
+      headers['content-length'] = body.length;
+      res.writeHead(failoverResponse.status_code, headers);
+      res.end(body);
     },
+    logLevel: log_level,
     logProvider() {
       return logger;
     }
