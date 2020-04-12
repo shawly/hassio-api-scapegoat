@@ -8,6 +8,6 @@ if ! bashio::fs.directory_exists '/config/api-scapegoat/'; then
     mkdir -p /config/api-scapegoat \
         || bashio::exit.nok "Failed to create node-red configuration directory"
 
-    # Copy sample json into config folder
-    cp /opt/api-scapegoat/config/example.json /config/api-scapegoat/
+    # Copy example configs into config folder
+    cp /opt/api-scapegoat/config/example* /config/api-scapegoat/
 fi
