@@ -33,11 +33,11 @@ To install this add-on you need to do the following
 1. Start the "API Scapegoat" add-on.
 1. Check the logs of the "API Scapegoat" add-on to make sure it starts.
 1. Click "Open Web UI" to get the **hostname** or **ip** for the instance, you
-need it for your rest sensors.
+   need it for your rest sensors.
 1. Now you can edit the configurations within your "config/api-scapegoat"
-folder.
+   folder.
 1. Please look at the [setup](#setup-api-scapegoat) section to configure API
-Scapegoat itself
+   Scapegoat itself
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/shawly/hassio-addons`.
