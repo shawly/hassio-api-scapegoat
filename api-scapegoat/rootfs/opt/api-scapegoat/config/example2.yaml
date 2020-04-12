@@ -1,0 +1,15 @@
+route: /index.html
+target: 'http://192.168.100.233'
+failover:
+  response:
+    status_code: 200
+    headers:
+      content-type: text/html; charset=UTF-8
+      server: API Scapegoat
+    body: >-
+      <head>
+        <title>API Scapegoat</title>
+      </head>
+      <body>
+        <h1>Server Offline</h1>
+      </body>

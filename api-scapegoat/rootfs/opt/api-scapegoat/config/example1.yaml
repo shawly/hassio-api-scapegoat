@@ -1,0 +1,9 @@
+route: /api
+target: 'http://192.168.100.233:8080'
+failover:
+  response:
+    status_code: 202
+    headers:
+      content-type: application/json
+      server: API Scapegoat
+    body: '{ "status": "api offline" }'
