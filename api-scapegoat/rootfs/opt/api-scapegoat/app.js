@@ -55,7 +55,7 @@ const createScapegoat = function (config) {
 }
 
 // read and create scapegoats
-const configDirectory = app.get('env') === 'development' ? path.join('./config/') : path.join('/config/api-scapegoat');
+const configDirectory = app.get('env') === 'development' ? path.join('./config/') : path.join('/config/api-scapegoat/');
 logger.info('[API Scapegoat] Reading scapegoats from ' + configDirectory);
 fs.readdirSync(configDirectory).forEach(file => {
 
