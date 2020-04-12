@@ -62,13 +62,13 @@ fs.readdirSync(configDirectory).forEach(file => {
   if (file.endsWith('.yaml')) {
     logger.info('[API Scapegoat] Importing ' + file + '...');
     const config = yaml.safeLoad(fs.readFileSync(configDirectory + file, 'utf8'));
-    logger.debug(config);
+    logger.debug('[API Scapegoat] Config: ' + JSON.stringify(config));
     createScapegoat(config);
   }
   else if (file.endsWith('.json')) {
     logger.info('[API Scapegoat] Importing ' + file + '...');
-    const config = fs.readFileSync(configDirectory + file, 'utf8');
-    logger.debug(config);
+    const config = JSON.parse(fs.readFileSync(configDirectory + file, 'utf8'));
+    logger.debug('[API Scapegoat] Config: ' + JSON.stringify(config));
     createScapegoat(config);
   }
   else {
