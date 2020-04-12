@@ -97,7 +97,7 @@ The private key file to use for SSL.
 API Scapegoat can be configured either via .json or .yaml files. Even though
 API Scapegoat uses [http-proxy-middleware][http-proxy-middleware], not every
 functionality is implemented or will be implemented. Meaning every feature
-which is not documented here, is not be supported.
+which is not documented here, is not supported.
 
 ### Example
 
@@ -109,7 +109,6 @@ pathRewrite:
   ^/api/hello: /other/api/hello
   ^/api/todos: /todos
 changeOrigin: 'false'
-isWebsocket: 'false'
 router:
   'myclient': 'https://jsonplaceholder.typicode.com'
   '192.168.100.200:8080': 'http://google.de'
