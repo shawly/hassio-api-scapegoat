@@ -55,17 +55,17 @@ const createScapegoat = function (config) {
 }
 
 // read and create scapegoats
-const configDirectory = app.get('env') === 'development' ? path.join('./config/') : path.join('/config/');
+const configDirectory = app.get('env') === 'development' ? path.join('./config/') : path.join('/config/api-scapegoat');
 logger.info('[API Scapegoat] Reading scapegoats from ' + configDirectory);
 fs.readdirSync(configDirectory).forEach(file => {
 
-  if (file.endsWith('.yaml') > -1) {
+  if (file.endsWith('.yaml')) {
     logger.info('[API Scapegoat] Importing ' + file + '...');
     const config = yaml.safeLoad(fs.readFileSync(configDirectory + file, 'utf8'));
     logger.debug(config);
     createScapegoat(config);
   }
-  else if (file.endsWith('.json') > -1) {
+  else if (file.endsWith('.json')) {
     logger.info('[API Scapegoat] Importing ' + file + '...');
     const config = fs.readFileSync(configDirectory + file, 'utf8');
     logger.debug(config);
