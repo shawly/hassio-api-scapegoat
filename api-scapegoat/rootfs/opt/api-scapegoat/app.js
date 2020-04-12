@@ -50,7 +50,6 @@ const createScapegoat = function (config) {
   app.use(config.route, createProxyMiddleware({
     target: config.target,
     changeOrigin: config.changeOrigin,
-    ws: config.isWebsocket,
     router: config.router,
     pathRewrite: config.pathRewrite,
     proxyTimeout: config.proxyTimeout,
@@ -58,11 +57,12 @@ const createScapegoat = function (config) {
     secure: true,
     onError(err, req, res) {
       const failoverResponse = config.failover.response;
+      const status = failoverResponse.status_code || 200;
       const headers = failoverResponse.headers;
       const body = failoverResponse.body;
       // content length will always be overridden
       headers['content-length'] = body.length;
-      res.writeHead(failoverResponse.status_code, headers);
+      res.writeHead(status, headers);
       res.end(body);
     },
     logLevel: log_level,

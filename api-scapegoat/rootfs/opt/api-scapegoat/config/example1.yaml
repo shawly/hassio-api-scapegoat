@@ -10,8 +10,6 @@ pathRewrite:
   ^/api/todos: /todos
 # rewrites the origin of the 'host' header to the target URL
 changeOrigin: 'false'
-# if you want to proxy a websocket api, make sure target uses ws:// schema
-isWebsocket: 'false'
 router:
   # when request.headers.host == 'myclient',
   # override target 'myclient' to 'https://jsonplaceholder.typicode.com'
