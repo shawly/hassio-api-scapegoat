@@ -17,6 +17,8 @@ RUN \
         nodejs-current=13.1.0-r0 \
         openssl=1.1.1d-r3 \
     \
+    && git clone --branch="v1.0.0" --depth=1 "https://github.com/shawly/api-scapegoat.git" /tmp/api-scapegoat \
+    && cp -rv /tmp/api-scapegoat /opt \
     && cd /opt/api-scapegoat \
     && npm install \
     \
